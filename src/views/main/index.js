@@ -1,10 +1,10 @@
 import React from "react";
-import Expenses from "../../components/Expenses";
+import MainContainer from "../../containers/MainContainer";
 
 const Main = () => {
   return (
     <>
-      <Expenses />
+      <MainContainer />
     </>
   );
 };
