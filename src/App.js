@@ -2,8 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import Header from "./components/Header";
-import Main from "./views/main";
-import MainMenu from "./components/MainMenu";
+import Routes from "./routes";
 import "./styles.css";
 import "antd/dist/antd.css";
 
@@ -12,8 +11,7 @@ const App = () => {
     <Provider store={store}>
       <Header />
       <>
-        <MainMenu />
-        <Main />
+        <Routes />
       </>
     </Provider>
   );

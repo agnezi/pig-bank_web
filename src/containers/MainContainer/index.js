@@ -2,6 +2,7 @@ import React from "react";
 import ExpensesTable from "../../components/ExpensesTable";
 import LacesTable from "../../components/LacesTable";
 import ExpensesForm from "../../components/ExpensesForm";
+import MainTransitionContainer from "../MainTransitionContainer";
 
 import { Row, Col } from "antd";
 
@@ -15,6 +16,7 @@ const MainContainer = () => {
         <LacesTable />
       </Col>
       <ExpensesForm />
+      <MainTransitionContainer />
     </Row>
   );
 };
