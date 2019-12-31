@@ -1,21 +1,23 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { ConfigProvider } from "antd";
+import en_US from "antd/es/locale-provider/en_US";
 import store from "./store";
 import Header from "./components/Header";
-import Main from "./views/main";
-import MainMenu from "./components/MainMenu";
+import Routes from "./routes";
 import "./styles.css";
 import "antd/dist/antd.css";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Header />
-      <>
-        <MainMenu />
-        <Main />
-      </>
-    </Provider>
+    <ConfigProvider locale={en_US}>
+      <Provider store={store}>
+        <Header />
+        <>
+          <Routes />
+        </>
+      </Provider>
+    </ConfigProvider>
   );
 };
 

@@ -1,18 +1,39 @@
 import React from "react";
-import { Menu, Icon } from "antd";
+import { Row, Col, Menu, Icon } from "antd";
+import { Link } from "react-router-dom";
 
 const MainMenu = () => {
   return (
-    <Menu>
-      <Menu.Item>
-        <Icon type="layout" />
-        Home
-      </Menu.Item>
-      <Menu.Item>
-        <Icon type="setting" />
-        Settings
-      </Menu.Item>
-    </Menu>
+    <Row type={"flex"} justify={"center"}>
+      <Col>
+        <Menu mode="horizontal">
+          <Menu.Item>
+            <Link to="/">
+              <Icon type="layout" />
+              Home
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/expenses">
+              <Icon type="shopping-cart" />
+              Expenses
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/lace">
+              <Icon type="dollar" />
+              Lace
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/settings">
+              <Icon type="setting" />
+              Settings
+            </Link>
+          </Menu.Item>
+        </Menu>
+      </Col>
+    </Row>
   );
 };
 
