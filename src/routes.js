@@ -2,18 +2,25 @@ import React from "react";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Main from "./views/main";
+import Register from "./views/register";
 import Login from "./views/login";
-import MainMenu from "./components/MainMenu";
+import Dashboard from "./views/dashboard";
 
-const Routes = () => (
-  <BrowserRouter>
-    <MainMenu />
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route exact path="/" component={Main} />
-    </Switch>
-  </BrowserRouter>
-);
+const Routes = () => {
+  console.log("Register", Register);
+  console.log("Login", Login);
+  console.log("Dashboard", Dashboard);
+  return (
+    <BrowserRouter>
+      <>
+        <Switch>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route exact path="/" component={Dashboard} />
+        </Switch>
+      </>
+    </BrowserRouter>
+  );
+};
 
 export default Routes;

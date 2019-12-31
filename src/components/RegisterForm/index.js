@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Form, Icon, Input, Button } from "antd";
 
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { form } = this.props;
@@ -14,9 +14,9 @@ class LoginForm extends React.Component {
     });
   };
 
-  validateToNext = (rule, value, callback) => {
+  validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
-    if (value) {
+    if (value && this.state.confirmDirty) {
       form.validateFields(["confirm"], { force: true });
     }
     callback();
@@ -68,19 +68,32 @@ class LoginForm extends React.Component {
                 ]
               })(<Input prefix={<Icon type="mail" />} />)}
             </Form.Item>
+            <Form.Item label="Name" hasFeedback>
+              {form.getFieldDecorator("name", {
+                rules: [{ required: true, message: "Please input your name!" }]
+              })(<Input prefix={<Icon type="user" />} />)}
+            </Form.Item>
             <Form.Item label="Password" hasFeedback>
               {form.getFieldDecorator("password", {
                 rules: [
                   { required: true, message: "Please input yout password!" },
                   {
-                    validator: this.validateToNext
+                    validator: this.validateToNextPassword
                   }
+                ]
+              })(<Input.Password prefix={<Icon type="lock"></Icon>} />)}
+            </Form.Item>
+            <Form.Item label="Confirm Password" hasFeedback>
+              {form.getFieldDecorator("confirm", {
+                rules: [
+                  { required: true, message: "Please confirm yout password!" },
+                  { validator: this.compareToFirstPassword }
                 ]
               })(<Input.Password prefix={<Icon type="lock"></Icon>} />)}
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
               <Button type="primary" htmlType="submit">
-                Sign in
+                Register
               </Button>
             </Form.Item>
           </Form>
@@ -89,6 +102,8 @@ class LoginForm extends React.Component {
     );
   }
 }
-const WrappedLoginForm = Form.create({ name: "register_form" })(LoginForm);
+const WrappedRegisterForm = Form.create({ name: "register_form" })(
+  RegisterForm
+);
 
-export default WrappedLoginForm;
+export default WrappedRegisterForm;
