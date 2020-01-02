@@ -1,25 +1,28 @@
 import React from "react";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import history from "./Helpers/history";
 
 import Register from "./views/register";
 import Login from "./views/login";
 import Dashboard from "./views/dashboard";
+import NotFoundView from "./views/notFoundView";
 
 const Routes = () => {
-  console.log("Register", Register);
-  console.log("Login", Login);
-  console.log("Dashboard", Dashboard);
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <>
         <Switch>
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/" component={Dashboard} />
+          <Route component={NotFoundView} />
         </Switch>
       </>
-    </BrowserRouter>
+    </Router>
   );
 };
 
