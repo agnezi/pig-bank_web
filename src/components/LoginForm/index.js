@@ -1,13 +1,22 @@
 import React from "react";
+
+// antd
 import { Row, Col, Form, Icon, Input, Button } from "antd";
+
+import { Link } from "react-router-dom";
+
+//redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as LoginActions from "../../store/ducks/login/actions";
 
 class LoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    const { form } = this.props;
+    const { form, loadRequest } = this.props;
     form.validateFields((err, values) => {
       if (!err) {
-        console.log(values);
+        loadRequest(values);
       } else {
         console.log(err);
       }
@@ -79,9 +88,16 @@ class LoginForm extends React.Component {
               })(<Input.Password prefix={<Icon type="lock"></Icon>} />)}
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="primary"
+                htmlType="submit"
+                onSubmit={this.handleSubmit}
+              >
                 Sign in
               </Button>
+              <Link to="/register">
+                <Button type="secondary">Sign up</Button>
+              </Link>
             </Form.Item>
           </Form>
         </Col>
@@ -89,6 +105,15 @@ class LoginForm extends React.Component {
     );
   }
 }
+
 const WrappedLoginForm = Form.create({ name: "register_form" })(LoginForm);
 
-export default WrappedLoginForm;
+const mapStateToProps = state => ({
+  login: state.login,
+  loading: state.register.loading
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(LoginActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedLoginForm);
