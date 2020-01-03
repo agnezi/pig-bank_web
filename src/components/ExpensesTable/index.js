@@ -1,22 +1,25 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React from "react";
 
 //antd
 import { Table } from "antd";
 
 //redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import * as ExpensesActions from "../../store/ducks/expenses/actions";
 
-class ExpensesTable extends Component {
-  componentDidMount() {
+class ExpensesTable extends React.Component {
+  async componentDidMount() {
     const { loadRequest } = this.props;
-    loadRequest();
+    try {
+      await loadRequest();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
     const { loading, loadRequest, expenses } = this.props;
-    console.log(expenses);
     const totalItens = expenses.data.total;
     const pageLimit = expenses.data.limit;
 

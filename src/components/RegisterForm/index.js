@@ -1,13 +1,21 @@
 import React from "react";
+
+//antd
 import { Row, Col, Form, Icon, Input, Button } from "antd";
+
+//redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as RegisterActions from "../../store/ducks/register/actions";
 
 class RegisterForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    const { form } = this.props;
+    const { form, loadRequest } = this.props;
     form.validateFields((err, values) => {
       if (!err) {
-        console.log(values);
+        const { name, email, password } = values;
+        loadRequest({ name, email, password });
       } else {
         console.log(err);
       }
@@ -16,7 +24,7 @@ class RegisterForm extends React.Component {
 
   validateToNextPassword = (rule, value, callback) => {
     const { form } = this.props;
-    if (value && this.state.confirmDirty) {
+    if (value && value.length > 8) {
       form.validateFields(["confirm"], { force: true });
     }
     callback();
@@ -92,7 +100,11 @@ class RegisterForm extends React.Component {
               })(<Input.Password prefix={<Icon type="lock"></Icon>} />)}
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="primary"
+                htmlType="submit"
+                onSubmit={this.handleSubmit}
+              >
                 Register
               </Button>
             </Form.Item>
@@ -106,4 +118,15 @@ const WrappedRegisterForm = Form.create({ name: "register_form" })(
   RegisterForm
 );
 
-export default WrappedRegisterForm;
+const mapStateToProps = state => ({
+  expenses: state.register,
+  loading: state.register.loading
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(RegisterActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WrappedRegisterForm);

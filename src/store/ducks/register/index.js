@@ -1,32 +1,24 @@
-import { LacesTypes } from "./types";
+import { RegisterTypes } from "./types";
 
 const INITIAL_STATE = {
-  data: [
-    {
-      _id: 1,
-      title: "Nasdaq",
-      amount: 5000
-    }
-  ],
+  data: undefined,
   error: false,
-  loading: false,
-  page: 1,
-  pageSize: 10
+  loading: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LacesTypes.LOAD_REQUEST:
+    case RegisterTypes.LOAD_REQUEST:
       return { ...state, loading: true };
-    case LacesTypes.LOAD_SUCCESS:
+    case RegisterTypes.LOAD_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
         data: action.payload.data
       };
-    case LacesTypes.LOAD_FAILURE:
-      return { ...state, loading: false, error: true, data: [] };
+    case RegisterTypes.LOAD_FAILURE:
+      return { ...state, loading: false, error: true, data: {} };
     default:
       return state;
   }
