@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 //antd
 import { Table } from "antd";
 
 //redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import * as LacesActions from "../../store/ducks/laces/actions";
 
 class LacesTable extends Component {

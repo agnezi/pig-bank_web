@@ -2,6 +2,8 @@ import { call, put } from "redux-saga/effects";
 import api from "../../../services/api";
 import { loadSuccess, loadFailure } from "../laces/actions";
 
+import errorHandler from "../../../Helpers/errorHandler";
+
 export function* loadLaces(action) {
   const { page, pageSize } = action.payload;
   const userId =
@@ -16,8 +18,9 @@ export function* loadLaces(action) {
   };
   try {
     const response = yield call(api.get, "/lace", config);
-    yield put(loadSuccess(response.data.docs));
-  } catch (error) {
+    yield put(loadSuccess(response.data));
+  } catch (err) {
     yield put(loadFailure());
+    errorHandler(err);
   }
 }
