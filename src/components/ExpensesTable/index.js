@@ -9,14 +9,17 @@ import { bindActionCreators } from "redux";
 import * as ExpensesActions from "../../store/ducks/expenses/actions";
 
 class ExpensesTable extends React.Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { loadRequest } = this.props;
-    loadRequest();
+    try {
+      await loadRequest();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
     const { loading, loadRequest, expenses } = this.props;
-    console.log(expenses);
     const totalItens = expenses.data.total;
     const pageLimit = expenses.data.limit;
 

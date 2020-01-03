@@ -9,14 +9,19 @@ import { Table } from "antd";
 import * as LacesActions from "../../store/ducks/laces/actions";
 
 class LacesTable extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { loadRequest } = this.props;
-    loadRequest();
+    try {
+      await loadRequest();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
-    const { laces } = this.props;
-    const { loading } = this.props;
+    const { loading, loadRequest, laces } = this.props;
+    const totalItens = laces.data.total;
+    const pageLimit = laces.data.limit;
     const columns = [
       {
         title: "Title",
@@ -32,7 +37,21 @@ class LacesTable extends Component {
       }
     ];
 
-    const data = laces;
+    const data = laces.data.docs;
+
+    const paginationConfig = {
+      pageSize: pageLimit,
+      total: totalItens,
+      showSizeChanger: true,
+      showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+      onChange: (page, pageSize) => {
+        loadRequest({ page });
+      },
+      onShowSizeChange: (current, size) => {
+        loadRequest({ page: current, pageSize: size });
+      }
+    };
+
     return (
       <>
         <Table
@@ -40,6 +59,7 @@ class LacesTable extends Component {
           columns={columns}
           dataSource={data}
           rowKey={"_id"}
+          pagination={paginationConfig}
         />
       </>
     );
@@ -47,7 +67,7 @@ class LacesTable extends Component {
 }
 
 const mapStateToProps = state => ({
-  laces: state.laces.data,
+  laces: state.laces,
   loading: state.laces.loading
 });
 

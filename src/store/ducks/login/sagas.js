@@ -13,11 +13,8 @@ export function* loadLogin(action) {
 
   try {
     const response = yield call(api.post, "/auth", data);
-    yield localStorage.setItem("pig-bank", response.data.token);
-    yield localStorage.setItem(
-      "pig-bank-user",
-      JSON.stringify(response.data.user._id)
-    );
+    yield localStorage.setItem("token", response.data.token);
+    yield localStorage.setItem("user_id", response.data.user._id);
     yield put(loadSuccess(response.data));
     history.push("/");
   } catch (error) {
