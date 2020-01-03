@@ -13,7 +13,7 @@ export function* loadRegister(action) {
   try {
     const response = yield call(api.post, "/register", data);
 
-    localStorage.setItem("pig-bank", response.data.token);
+    localStorage.setItem("token", response.data.token);
 
     yield put(loadSuccess(response.data));
   } catch (err) {

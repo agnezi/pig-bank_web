@@ -9,7 +9,9 @@ const INITIAL_STATE = {
     }
   ],
   error: false,
-  loading: false
+  loading: false,
+  page: 1,
+  pageSize: 10
 };
 
 const reducer = (state = INITIAL_STATE, action) => {

@@ -1,13 +1,14 @@
 import axios from "axios";
 
+const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
 const api = axios.create({
   baseURL: "http://localhost:5000/api",
   timeout: 20000,
-  headers: { Authorization: localStorage.getItem("pig_bank") },
-  payload: { user_id: localStorage.getItem("pig_bank_user") }
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: token
+  }
 });
-
-console.log("pigbanktoken", localStorage.getItem("pig_bank"));
-console.log("api-front", api.headers);
 
 export default api;

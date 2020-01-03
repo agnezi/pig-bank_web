@@ -4,8 +4,8 @@ import history from "../../../Helpers/history";
 
 export function* loadLogout() {
   try {
-    localStorage.removeItem("pig-bank");
-    localStorage.removeItem("pig-bank-user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
 
     yield put(logoutSuccess());
     history.push("/login");
