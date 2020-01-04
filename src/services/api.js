@@ -1,9 +1,10 @@
 import axios from "axios";
+import env from "../env";
 
 const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: env.baseURL,
   timeout: 20000,
   headers: {
     "Content-Type": "application/json",
