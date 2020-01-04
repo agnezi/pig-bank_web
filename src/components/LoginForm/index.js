@@ -1,7 +1,7 @@
 import React from "react";
 
 // antd
-import { Row, Col, Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button } from "antd";
 
 import { Link } from "react-router-dom";
 
@@ -43,65 +43,56 @@ class LoginForm extends React.Component {
   render() {
     const { form } = this.props;
     const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 }
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 }
-      }
+      labelCol: {},
+      wrapperCol: {}
     };
     const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0
-        },
-        sm: {
-          span: 16,
-          offset: 8
-        }
-      }
+      wrapperCol: {}
     };
 
     return (
-      <Row type="flex" justify="center">
-        <Col>
-          <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-            <Form.Item label="E-mail" hasFeedback>
-              {form.getFieldDecorator("email", {
-                rules: [
-                  { type: "email", message: "The input is not valid E-mail!" },
-                  { required: true, message: "Please input your E-mail!" }
-                ]
-              })(<Input prefix={<Icon type="mail" />} />)}
-            </Form.Item>
-            <Form.Item label="Password" hasFeedback>
-              {form.getFieldDecorator("password", {
-                rules: [
-                  { required: true, message: "Please input yout password!" },
-                  {
-                    validator: this.validateToNext
-                  }
-                ]
-              })(<Input.Password prefix={<Icon type="lock"></Icon>} />)}
-            </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                onSubmit={this.handleSubmit}
-              >
-                Sign in
-              </Button>
-              <Link to="/register">
-                <Button type="secondary">Sign up</Button>
-              </Link>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
+      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        <Form.Item label="E-mail" hasFeedback>
+          {form.getFieldDecorator("email", {
+            rules: [
+              { type: "email", message: "The input is not valid E-mail!" },
+              { required: true, message: "Please input your E-mail!" }
+            ]
+          })(<Input placeholder="E-mail" prefix={<Icon type="mail" />} />)}
+        </Form.Item>
+        <Form.Item label="Password" hasFeedback>
+          {form.getFieldDecorator("password", {
+            rules: [
+              { required: true, message: "Please input yout password!" },
+              {
+                validator: this.validateToNext
+              }
+            ]
+          })(
+            <Input.Password
+              placeholder="Password"
+              prefix={<Icon type="lock"></Icon>}
+            />
+          )}
+        </Form.Item>
+        <Form.Item {...tailFormItemLayout}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            onSubmit={this.handleSubmit}
+            block
+          >
+            Sign in
+          </Button>
+        </Form.Item>
+        <Form.Item {...tailFormItemLayout}>
+          <Link to="/register">
+            <Button type="secondary" block>
+              Sign up
+            </Button>
+          </Link>
+        </Form.Item>
+      </Form>
     );
   }
 }

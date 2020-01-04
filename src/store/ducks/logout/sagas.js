@@ -7,6 +7,9 @@ export function* loadLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
 
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user_id");
+
     yield put(logoutSuccess());
     history.push("/login");
   } catch (error) {

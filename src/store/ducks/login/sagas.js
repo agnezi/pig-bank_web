@@ -16,8 +16,10 @@ export function* loadLogin(action) {
     const response = yield call(api.post, "/auth", data);
     yield localStorage.setItem("token", response.data.token);
     yield localStorage.setItem("user_id", response.data.user._id);
+    yield sessionStorage.setItem("token", response.data.token);
+    yield sessionStorage.setItem("user_id", response.data.user._id);
     yield put(loadSuccess(response.data));
-    history.push("/");
+    yield history.push("/");
   } catch (err) {
     yield put(loadFailure());
     errorHandler(err);
