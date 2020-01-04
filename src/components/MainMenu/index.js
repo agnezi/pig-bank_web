@@ -37,9 +37,9 @@ const MainMenu = props => {
             </Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="/lace">
+            <Link to="/laces">
               <Icon type="dollar" />
-              Lace
+              Laces
             </Link>
           </Menu.Item>
           <Menu.Item>
