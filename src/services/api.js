@@ -1,10 +1,11 @@
 import axios from "axios";
-import env from "../env";
-
 const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
 const api = axios.create({
-  baseURL: env.baseURL,
+  baseURL:
+    process.env.REACT_APP_ENV === "prod"
+      ? process.env.REACT_APP_URL_PROD
+      : process.env.REACT_APP_URL_DEV,
   timeout: 20000,
   headers: {
     "Content-Type": "application/json",
