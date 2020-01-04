@@ -9,6 +9,8 @@ import history from "./Helpers/history";
 import Register from "./views/register";
 import Login from "./views/login";
 import Dashboard from "./views/dashboard";
+import Expenses from "./views/expenses";
+import Laces from "./views/laces";
 import NotFoundView from "./views/notFoundView";
 
 const Routes = () => {
@@ -19,6 +21,9 @@ const Routes = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Dashboard} />
+          <ProtectedRoute exact path="/expenses" component={Expenses} />
+          <ProtectedRoute exact path="/laces" component={Laces} />
+
           <Route component={NotFoundView} />
         </Switch>
       </>
