@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import MainMenu from "../MainMenu";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const token =
@@ -9,7 +10,10 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={props =>
         token ? (
-          <Component {...props} />
+          <>
+            <MainMenu />
+            <Component {...props} />
+          </>
         ) : (
           <Redirect
             to={{

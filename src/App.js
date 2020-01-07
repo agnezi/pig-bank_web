@@ -5,7 +5,6 @@ import en_US from "antd/es/locale-provider/en_US";
 import store from "./store";
 import Header from "./components/Header";
 import Routes from "./routes";
-import "./styles.css";
 import "antd/dist/antd.css";
 
 const App = () => {

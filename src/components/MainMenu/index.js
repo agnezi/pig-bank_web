@@ -43,6 +43,18 @@ const MainMenu = props => {
             </Link>
           </Menu.Item>
           <Menu.Item>
+            <Link to="/feed">
+              <Icon type="switcher" />
+              Feed
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/bank">
+              <Icon type="bank" />
+              Bank
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
             <Link to="/settings">
               <Icon type="setting" />
               Settings

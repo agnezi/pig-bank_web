@@ -23,7 +23,6 @@ const Routes = () => {
           <ProtectedRoute exact path="/" component={Dashboard} />
           <ProtectedRoute exact path="/expenses" component={Expenses} />
           <ProtectedRoute exact path="/laces" component={Laces} />
-
           <Route component={NotFoundView} />
         </Switch>
       </>

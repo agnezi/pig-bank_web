@@ -1,20 +1,28 @@
 import React from "react";
 import { Row, Col } from "antd";
 
-import MainMenu from "../../components/MainMenu";
+import { Box } from "./styled";
+
+import ExpensesLineChart from "../../components/ExpensesLineChart";
 import ExpensesForm from "../../components/ExpensesForm";
 import ExpensesTable from "../../components/ExpensesTable";
 
 const ExpensesContainer = () => {
   return (
     <>
-      <MainMenu />
       <Row>
         <Col>
+          <ExpensesLineChart />
+        </Col>
+      </Row>
+      <Row gutter={{ xs: 0, sm: 0, md: 0, lg: 10, xl: 10 }}>
+        <Col lg={20}>
           <ExpensesTable />
         </Col>
-        <Col>
-          <ExpensesForm />
+        <Col lg={4}>
+          <Box>
+            <ExpensesForm />
+          </Box>
         </Col>
       </Row>
     </>

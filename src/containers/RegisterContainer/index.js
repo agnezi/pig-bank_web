@@ -1,5 +1,6 @@
 import React from "react";
 import RegisterForm from "../../components/RegisterForm";
+import MainPig from "../../components/MainPig";
 import { Wrapper, Box } from "./styled";
 
 import { Row, Col } from "antd";
@@ -12,6 +13,11 @@ const RegisterContainer = () => {
           <Box>
             <RegisterForm />
           </Box>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MainPig />
         </Col>
       </Row>
     </Wrapper>

@@ -3,7 +3,7 @@ import Lottie from "react-lottie";
 
 import * as animationData from "../../assets/lotie/pig-bank";
 
-const MainTransition = () => {
+const MainPig = () => {
   const defaultOptions = {
     loot: true,
     autoplay: true,
@@ -14,9 +14,9 @@ const MainTransition = () => {
   };
   return (
     <>
-      <Lottie options={defaultOptions} height={400} width={400} />
+      <Lottie options={defaultOptions} height={200} width={200} />
     </>
   );
 };
 
-export default MainTransition;
+export default MainPig;
