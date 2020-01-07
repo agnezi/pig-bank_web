@@ -1,5 +1,6 @@
 import React from "react";
 import LoginForm from "../../components/LoginForm";
+import MainPig from "../../components/MainPig";
 
 import { Row, Col } from "antd";
 
@@ -13,6 +14,11 @@ const LoginContainer = () => {
           <Box>
             <LoginForm />
           </Box>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MainPig />
         </Col>
       </Row>
     </Wrapper>

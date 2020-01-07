@@ -1,7 +1,10 @@
 import React from "react";
+// echarts
 import ReactECharts from "echarts-for-react";
+// redux
+import { connect } from "react-redux";
 
-class ExpensesBarChart extends React.Component {
+class ExpensesLineChart extends React.Component {
   render() {
     const option = {
       xAxis: {
@@ -32,4 +35,8 @@ class ExpensesBarChart extends React.Component {
   }
 }
 
-export default ExpensesBarChart;
+const mapStateToProps = state => ({
+  expenses: state.expenses
+});
+
+export default connect(mapStateToProps, {})(ExpensesLineChart);
