@@ -23,3 +23,22 @@ export function* loadExpenses(action) {
     errorHandler(err);
   }
 }
+
+export function* createExpense(action) {
+  try {
+    const { title, amount, category } = action.payload.data;
+    const userId =
+      localStorage.getItem("user_id") || sessionStorage.getItem("user_id");
+    const payload = {
+      title,
+      amount,
+      category,
+      _id: userId
+    };
+    const response = yield call(api.post, "/expenses", payload);
+    yield put(loadSuccess(response.data));
+  } catch (err) {
+    yield put(loadFailure());
+    errorHandler(err);
+  }
+}

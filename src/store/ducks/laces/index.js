@@ -27,6 +27,18 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
     case LacesTypes.LOAD_FAILURE:
       return { ...state, loading: false, error: true, data: [] };
+    case LacesTypes.CREATE_REQUEST:
+      return { ...state, loading: true };
+    case LacesTypes.CREATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload.data
+      };
+    case LacesTypes.CREATE_FAILURE:
+      return { ...state, loading: false, error: true, data: [] };
+
     default:
       return state;
   }

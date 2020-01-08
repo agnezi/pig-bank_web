@@ -27,6 +27,18 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
     case ExpensesTypes.LOAD_FAILURE:
       return { ...state, loading: false, error: true, data: [] };
+    case ExpensesTypes.CREATE_REQUEST:
+      return { ...state, loading: true };
+    case ExpensesTypes.CREATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload.data
+      };
+    case ExpensesTypes.CREATE_FAILURE:
+      return { ...state, loading: false, error: true, data: [] };
+
     default:
       return state;
   }
