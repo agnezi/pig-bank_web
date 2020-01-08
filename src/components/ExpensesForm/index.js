@@ -1,11 +1,19 @@
 import React from "react";
+
+//antd
 import { Form, Input, Icon, Button } from "antd";
+
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as ExpensesActions from "../../store/ducks/expenses/actions";
 
 class ExpensesForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    const { form, createRequest } = this.props;
+    form.validateFieldsAndScroll((err, values) => {
       if (!err) {
+        createRequest(values);
         console.log("received values of form: ", values);
       }
     });
@@ -66,8 +74,19 @@ class ExpensesForm extends React.Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create({ name: "expense_create" })(
+const WrappedExpensesForm = Form.create({ name: "expense_create" })(
   ExpensesForm
 );
 
-export default WrappedRegistrationForm;
+const mapStateToProps = state => ({
+  expenses: state.expenses,
+  loading: state.expenses.loading
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ExpensesActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WrappedExpensesForm);
