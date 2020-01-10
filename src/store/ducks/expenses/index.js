@@ -36,8 +36,16 @@ const reducer = (state = INITIAL_STATE, action) => {
         error: false,
         data: action.payload.data
       };
-    case ExpensesTypes.CREATE_FAILURE:
-      return { ...state, loading: false, error: true, data: [] };
+
+    case ExpensesTypes.DELETE_REQUEST:
+      return { ...state, loading: true, error: false };
+    case ExpensesTypes.DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload.data
+      };
 
     default:
       return state;

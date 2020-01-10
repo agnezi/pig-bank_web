@@ -1,7 +1,7 @@
 import React from "react";
 
 //antd
-import { Table } from "antd";
+import { Table, Button } from "antd";
 
 //redux
 import { connect } from "react-redux";
@@ -18,6 +18,11 @@ class ExpensesTable extends React.Component {
     }
   }
 
+  handleDelete(row) {
+    const { deleteRequest } = this.props;
+    deleteRequest({ id: row._id });
+  }
+
   render() {
     const { loading, loadRequest, expenses } = this.props;
     const totalItens = expenses.data.total;
@@ -26,17 +31,30 @@ class ExpensesTable extends React.Component {
     const columns = [
       {
         title: "Title",
-        dataIndex: "title"
+        dataIndex: "title",
+        sorter: (a, b) => a.title.length - b.title.length
       },
       {
         title: "Amount",
-        dataIndex: "amount"
+        dataIndex: "amount",
+        sorter: (a, b) => a.amount - b.amount
       },
       {
         title: "Category",
-        dataIndex: "category"
+        dataIndex: "category",
+        sorter: (a, b) => a.category.length - b.category.length
+      },
+      {
+        title: "Action",
+        key: "_id",
+        render: row => (
+          <Button type="link" onClick={() => this.handleDelete(row)}>
+            Delete
+          </Button>
+        )
       }
     ];
+
     const data = expenses.data.docs;
 
     const paginationConfig = {

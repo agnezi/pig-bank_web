@@ -11,3 +11,8 @@ export const createRequest = data =>
 export const createSuccess = data =>
   action(LacesTypes.CREATE_SUCCESS, { data });
 export const createFailure = () => action(LacesTypes.CREATE_FAILURE);
+
+export const deleteRequest = data =>
+  action(LacesTypes.DELETE_REQUEST, { data });
+export const deleteSuccess = data =>
+  action(LacesTypes.DELETE_SUCCESS, { data });
