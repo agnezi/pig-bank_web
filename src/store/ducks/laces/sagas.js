@@ -1,6 +1,11 @@
 import { call, put } from "redux-saga/effects";
 import api from "../../../services/api";
-import { loadSuccess, loadFailure } from "../laces/actions";
+import {
+  loadSuccess,
+  loadFailure,
+  createSuccess,
+  deleteSuccess
+} from "../laces/actions";
 
 import errorHandler from "../../../Helpers/errorHandler";
 
@@ -37,7 +42,26 @@ export function* createLace(action) {
       _id: userId
     };
     const response = yield call(api.post, "/laces", payload);
-    yield put(loadSuccess(response.data));
+    yield put(createSuccess(response.data));
+  } catch (err) {
+    yield put(loadFailure());
+    errorHandler(err);
+  }
+}
+
+export function* deleteLace(action) {
+  try {
+    const { id } = action.payload.data;
+    const userId =
+      localStorage.getItem("user_id") || sessionStorage.getItem("user_id");
+    const config = {
+      params: {
+        id,
+        _id: userId
+      }
+    };
+    const response = yield call(api.delete, "/laces", config);
+    yield put(deleteSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
     errorHandler(err);

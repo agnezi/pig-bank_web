@@ -3,6 +3,7 @@ export const ExpensesTypes = {
   LOAD_SUCCESS: "@expenses/LOAD_SUCCESS",
   LOAD_FAILURE: "@expenses/LOAD_FAILURE",
   CREATE_REQUEST: "@expenses/CREATE_REQUEST",
-  CREATE_FAILURE: "@expenses/CREATE_FAILURE",
-  CREATE_SUCCESS: "@expenses/CREATE_SUCCESS"
+  CREATE_SUCCESS: "@expenses/CREATE_SUCCESS",
+  DELETE_REQUEST: "@expenses/DELETE_REQUEST",
+  DELETE_SUCCESS: "@expenses/DELETE_SUCCESS"
 };

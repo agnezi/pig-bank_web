@@ -11,3 +11,8 @@ export const createRequest = data =>
 export const createSuccess = data =>
   action(ExpensesTypes.CREATE_SUCCESS, { data });
 export const createFailure = () => action(ExpensesTypes.CREATE_FAILURE);
+
+export const deleteRequest = data =>
+  action(ExpensesTypes.DELETE_REQUEST, { data });
+export const deleteSuccess = data =>
+  action(ExpensesTypes.DELETE_SUCCESS, { data });
