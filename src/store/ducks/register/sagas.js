@@ -3,7 +3,6 @@ import api from "../../../services/api";
 import { loadSuccess, loadFailure } from "../expenses/actions";
 
 export function* loadRegister(action) {
-  console.log(action);
   const { name, email, password } = action.payload.data;
   const data = {
     name,

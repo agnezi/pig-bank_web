@@ -3,6 +3,7 @@ import { Row, Col } from "antd";
 
 import { Box } from "./styled";
 
+import LacesLineChart from "../../components/LacesLineChart";
 import LacesTable from "../../components/LacesTable";
 import LacesForm from "../../components/LacesForm";
 
@@ -10,7 +11,9 @@ const LacesContainer = () => {
   return (
     <>
       <Row>
-        <Col></Col>
+        <Col>
+          <LacesLineChart />
+        </Col>
       </Row>
       <Row>
         <Col lg={20}>

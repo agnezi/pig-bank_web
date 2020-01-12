@@ -57,7 +57,6 @@ class LoginForm extends React.Component {
     };
 
     const { loading } = this.props;
-    console.log(loading);
     return (
       <>
         {!loading ? (
