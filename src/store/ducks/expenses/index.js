@@ -1,13 +1,7 @@
 import { ExpensesTypes } from "./types";
 
 const INITIAL_STATE = {
-  data: [
-    {
-      _id: 1,
-      title: "Xbox",
-      amount: 5000
-    }
-  ],
+  data: [],
   error: false,
   loading: false,
   page: 1,

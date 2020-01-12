@@ -7,22 +7,22 @@ import moment from "moment";
 
 //moment
 // import moment from "moment";
-class ExpensesLineChart extends React.Component {
+class LacesLineChart extends React.Component {
   render() {
-    const { expenses } = this.props;
-    const amounts = expenses.data.docs
-      ? expenses.data.docs.map(item => item.amount)
+    const { laces } = this.props;
+    const amounts = laces.data.docs
+      ? laces.data.docs.map(item => item.amount)
       : [];
 
-    const dates = expenses.data.docs
-      ? expenses.data.docs.map(item =>
+    const dates = laces.data.docs
+      ? laces.data.docs.map(item =>
           moment(item.expense_at).format("MM-DD-YYYY")
         )
       : [];
 
     const option = {
       title: {
-        text: "Expenses"
+        text: "Laces"
       },
       tooltip: {
         trigger: "axis"
@@ -61,7 +61,7 @@ class ExpensesLineChart extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  expenses: state.expenses
+  laces: state.laces
 });
 
-export default connect(mapStateToProps, {})(ExpensesLineChart);
+export default connect(mapStateToProps, {})(LacesLineChart);

@@ -14,7 +14,6 @@ class ExpensesForm extends React.Component {
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         createRequest(values);
-        console.log("received values of form: ", values);
       }
     });
   };
