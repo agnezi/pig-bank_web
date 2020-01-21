@@ -20,7 +20,7 @@ export function* loadExpenses(action) {
         _id: userId
       }
     };
-    const response = yield call(api.get, "/expenses", config);
+    const response = yield call(api().get, "/expenses", config);
     yield put(loadSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
@@ -40,7 +40,7 @@ export function* createExpense(action) {
       category,
       _id: userId
     };
-    const response = yield call(api.post, "/expenses", payload);
+    const response = yield call(api().post, "/expenses", payload);
     yield put(createSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
@@ -59,7 +59,7 @@ export function* deleteExpense(action) {
         _id: userId
       }
     };
-    const response = yield call(api.delete, "/expenses", config);
+    const response = yield call(api().delete, "/expenses", config);
     yield put(deleteSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
