@@ -13,7 +13,7 @@ export function* loadLogin(action) {
   };
 
   try {
-    const response = yield call(api.post, "/auth", data);
+    const response = yield call(api().post, "/auth", data);
     if (response.data.token && response.data.user._id) {
       yield localStorage.setItem("token", response.data.token);
       yield localStorage.setItem("user_id", response.data.user._id);

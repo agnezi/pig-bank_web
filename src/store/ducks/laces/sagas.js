@@ -22,7 +22,7 @@ export function* loadLaces(action) {
         _id: userId
       }
     };
-    const response = yield call(api.get, "/laces", config);
+    const response = yield call(api().get, "/laces", config);
     yield put(loadSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
@@ -41,7 +41,7 @@ export function* createLace(action) {
       category,
       _id: userId
     };
-    const response = yield call(api.post, "/laces", payload);
+    const response = yield call(api().post, "/laces", payload);
     yield put(createSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());
@@ -60,7 +60,7 @@ export function* deleteLace(action) {
         _id: userId
       }
     };
-    const response = yield call(api.delete, "/laces", config);
+    const response = yield call(api().delete, "/laces", config);
     yield put(deleteSuccess(response.data));
   } catch (err) {
     yield put(loadFailure());

@@ -10,7 +10,7 @@ export function* loadRegister(action) {
     password
   };
   try {
-    const response = yield call(api.post, "/register", data);
+    const response = yield call(api().post, "/register", data);
 
     localStorage.setItem("token", response.data.token);
 
