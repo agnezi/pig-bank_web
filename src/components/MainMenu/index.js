@@ -3,23 +3,20 @@ import { Row, Col, Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as LogoutActions from "../../store/ducks/logout/actions";
-import { bindActionCreators } from "redux";
 
-const MainMenu = props => {
+const MainMenu = () => {
+  const dispatch = useDispatch();
+
   const { SubMenu } = Menu;
-  const { logoutRequest } = props;
   const history = useHistory();
 
   const handleLogout = async () => {
-    try {
-      await logoutRequest();
-      history.push("/login");
-    } catch (err) {
-      console.log(err);
-    }
+    await dispatch(LogoutActions.logoutRequest());
+    history.push("/login");
   };
+
   return (
     <Row type={"flex"} justify={"center"}>
       <Col>
@@ -81,11 +78,4 @@ const MainMenu = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  logout: state.logout
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(LogoutActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainMenu);
+export default MainMenu;
