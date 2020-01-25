@@ -4,6 +4,7 @@ import { loadSuccess, loadFailure } from "../login/actions";
 import history from "../../../Helpers/history";
 
 import errorHandler from "../../../Helpers/errorHandler";
+
 export function* loadLogin(action) {
   const { email, password } = action.payload.data;
 
