@@ -6,6 +6,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import history from "./Helpers/history";
 
+import Header from "./components/Header";
+
 import Register from "./views/register";
 import Login from "./views/login";
 import Dashboard from "./views/dashboard";
@@ -17,6 +19,7 @@ const Routes = () => {
   return (
     <Router history={history}>
       <>
+        <Header />
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />

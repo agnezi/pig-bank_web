@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 const DashboardCotainer = () => {
   return (
     <>
-      <Row gutter={12}>
+      <Row gutter={{ xl: 12, lg: 12 }}>
         <Col xl={{ span: 12 }} lg={{ span: 12 }}>
           <ExpensesTable />
         </Col>
