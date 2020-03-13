@@ -16,7 +16,7 @@ import { loadLogout } from "./logout/sagas";
 
 export default function* rootSaga() {
   return yield all([
-    takeLatest(LoginTypes.LOAD_REQUEST, loadLogin),
+    takeLatest(LoginTypes.LOGIN_REQUEST, loadLogin),
     takeLatest(RegisterTypes.LOAD_REQUEST, loadRegister),
     takeLatest(ExpensesTypes.LOAD_REQUEST, loadExpenses),
     takeLatest(ExpensesTypes.CREATE_REQUEST, createExpense),

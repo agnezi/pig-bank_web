@@ -19,10 +19,10 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { form, loadRequest } = this.props;
+    const { form, loginRequest } = this.props;
     form.validateFields((err, values) => {
       if (!err) {
-        loadRequest(values);
+        loginRequest(values);
       } else {
         console.log(err);
       }
@@ -47,6 +47,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    console.log(this.props.login);
     const { form } = this.props;
     const formItemLayout = {
       labelCol: {},

@@ -1,6 +1,6 @@
 import { LoginTypes } from "./types";
 import { action } from "typesafe-actions";
 
-export const loadRequest = data => action(LoginTypes.LOAD_REQUEST, { data });
-export const loadSuccess = data => action(LoginTypes.LOAD_SUCCESS, { data });
-export const loadFailure = () => action(LoginTypes.LOAD_FAILURE);
+export const loginRequest = data => action(LoginTypes.LOAD_REQUEST, { data });
+export const loginSuccess = data => action(LoginTypes.LOAD_SUCCESS, { data });
+export const loginFailure = () => action(LoginTypes.LOAD_FAILURE);
